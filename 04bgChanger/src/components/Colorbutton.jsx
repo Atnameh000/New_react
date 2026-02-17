@@ -9,7 +9,7 @@ function Colorbutton({btncolor,handleOnClick}){
                 {backgroundColor: btncolor, color:'black'}:
                 {backgroundColor: btncolor, color:'white'}
             } 
-            className="h-10 w-20 rounded-3xl object-center m-3 mr-0 border-black border-2"
+            className="h-10 w-20 rounded-3xl object-center cursor-pointer border-black border-2"
             onClick={
                 txtblackcolor.includes(btncolor)? 
                 handleOnClick(btncolor,'black'):

@@ -15,9 +15,9 @@ function App() {
   return (
     <div 
     style={{backgroundColor: Bgcolor, color: Txt}}
-    className="h-212 w-360 grid place-content-center text-center"
+    className="h-screen w-full text-center"
     >
-        <h1 className="text-9xl font-bold">{Bgcolor.toUpperCase()}</h1>
+        <h1 className="text-9xl font-bold">{Bgcolor.toUpperCase()}🔥</h1>
         <Colorgrid handleOnClick={handleOnClick}/>
     </div>
   )
