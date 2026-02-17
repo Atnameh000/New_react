@@ -7,27 +7,41 @@ function App() {
   const [ischaracterchecked, setIscharacterchecked] = useState(false)
 
 
-  const generatePassword = useCallback(() =>{
+  // const generatePassword = useCallback(() =>{
     
-    let generatedPassword = '';
-    let gibrish = '';
-    let smallletterGibrish = 'abcdefghijklmnopqrstuvwxyz'
-    gibrish  = smallletterGibrish.toUpperCase() + smallletterGibrish
-    if(isnumberchecked) gibrish += '0123456789'
-    if(ischaracterchecked) gibrish += '!@#$%^&*(){}[]'
+  //   let generatedPassword = '';
+  //   let gibrish = '';
+  //   let smallletterGibrish = 'abcdefghijklmnopqrstuvwxyz'
+  //   gibrish  = smallletterGibrish.toUpperCase() + smallletterGibrish
+  //   if(isnumberchecked) gibrish += '0123456789'
+  //   if(ischaracterchecked) gibrish += '!@#$%^&*(){}[]'
 
-    console.log(gibrish)
-    for(let i = 0; i < pwlength; i++){
-      generatedPassword += gibrish[Math.floor(Math.random() * gibrish.length )]
-    }
-    setPassword(generatedPassword)
-  },[pwlength,ischaracterchecked,isnumberchecked])
+  //   console.log(gibrish)
+  //   for(let i = 0; i < pwlength; i++){
+  //     generatedPassword += gibrish[Math.floor(Math.random() * gibrish.length )]
+  //   }
+  //   setPassword(generatedPassword)
+  // },[pwlength,ischaracterchecked,isnumberchecked])
 
-  useEffect(() =>{
-    generatePassword()
-  },[generatePassword])
+  // useEffect(() =>{
+  //   generatePassword()
+  // },[generatePassword])
 
-  const handleOnClick = () =>{
+    useEffect(() =>{
+      let generatedPassword = '';
+      let gibrish = '';
+      let smallletterGibrish = 'abcdefghijklmnopqrstuvwxyz'
+      gibrish  = smallletterGibrish.toUpperCase() + smallletterGibrish
+      if(isnumberchecked) gibrish += '0123456789'
+      if(ischaracterchecked) gibrish += '!@#$%^&*(){}[]'
+  
+      for(let i = 0; i < pwlength; i++){
+        generatedPassword += gibrish[Math.floor(Math.random() * gibrish.length )]
+      }
+      setPassword(generatedPassword)
+    },[pwlength,ischaracterchecked,isnumberchecked])
+
+  const handleCopy = () =>{
 
   }
 
@@ -40,7 +54,7 @@ function App() {
                   <span className="object-center text-orange-400 px-3 py-1 text-xl font-bold">{password}</span>
                   <button 
                   className="ml-auto bg-blue-600 h-10 w-20 object-center cursor-pointer text-white rounded-r-lg"
-                  onClick={handleOnClick}
+                  onClick={handleCopy}
                   >copy
                   </button>
                 </div>
