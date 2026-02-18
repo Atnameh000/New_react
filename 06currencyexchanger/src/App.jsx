@@ -53,6 +53,7 @@ function App() {
   }
 
   const fromPropsarr = {
+    direction : "From" ,
     currencies : currencies,
     'handleCurrencychange': handleCurrencychange,
     'handleCurrencyupdate': handleCurrencyupdate,
@@ -61,6 +62,7 @@ function App() {
   }
 
   const toPropsarr = {
+    direction : "To" ,
     currencies : currencies,
     'handleCurrencychange': handleCurrencychange,
     'handleCurrencyupdate': handleCurrencyupdate,
@@ -73,9 +75,9 @@ function App() {
       <div className="fixed flex flex-wrap top-50 inset-x-0 justify-center ">
         <div className="flex flex-col p-5 gap-3 bg-gray-600 rounded-xl">
           <div className="flex flex-col">
-            <Currencybox direction = "From" Propsarr = {fromPropsarr}/>
+            <Currencybox Propsarr = {fromPropsarr}/>
             <button onClick={handleSwap} className="cursor-pointer relative z-20 ml-55 p-2 bg-blue-600 rounded-xl text-white w-22 border-2">Swap</button>
-            <Currencybox direction = "To" Propsarr= {toPropsarr}/>
+            <Currencybox Propsarr= {toPropsarr}/>
           </div>
           <div onClick={handleCurrencyexchange} className="cursor-pointer flex flex-wrap py-3 justify-center bg-blue-600 rounded-xl text-xl text-white mb-3">
             <span>Convert {fromcurrency} to {tocurrency}</span>

@@ -1,4 +1,4 @@
-import Colorbutton from "./Colorbutton"
+import { Colorbutton } from './index'
 
 function Colorgrid({handleOnClick}){
 
