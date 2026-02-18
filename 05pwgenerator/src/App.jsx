@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 function App() {
   const [pwlength, setPwlength] = useState(10)
@@ -6,43 +6,50 @@ function App() {
   const [isnumberchecked, setIsnumberchecked] = useState(false)
   const [ischaracterchecked, setIscharacterchecked] = useState(false)
 
+  const passRef = useRef(null)
 
-  // const generatePassword = useCallback(() =>{
+
+  const generatePassword = useCallback(() =>{
     
-  //   let generatedPassword = '';
-  //   let gibrish = '';
-  //   let smallletterGibrish = 'abcdefghijklmnopqrstuvwxyz'
-  //   gibrish  = smallletterGibrish.toUpperCase() + smallletterGibrish
-  //   if(isnumberchecked) gibrish += '0123456789'
-  //   if(ischaracterchecked) gibrish += '!@#$%^&*(){}[]'
+    let generatedPassword = '';
+    let gibrish = '';
+    let smallletterGibrish = 'abcdefghijklmnopqrstuvwxyz'
+    gibrish  = smallletterGibrish.toUpperCase() + smallletterGibrish
+    if(isnumberchecked) gibrish += '0123456789'
+    if(ischaracterchecked) gibrish += '!@#$%^&*(){}[]'
 
-  //   console.log(gibrish)
-  //   for(let i = 0; i < pwlength; i++){
-  //     generatedPassword += gibrish[Math.floor(Math.random() * gibrish.length )]
-  //   }
-  //   setPassword(generatedPassword)
-  // },[pwlength,ischaracterchecked,isnumberchecked])
+    //console.log(gibrish)
+    for(let i = 0; i < pwlength; i++){
+      generatedPassword += gibrish[Math.floor(Math.random() * gibrish.length )]
+    }
+    setPassword(generatedPassword)
+  },[pwlength,ischaracterchecked,isnumberchecked])
 
-  // useEffect(() =>{
-  //   generatePassword()
-  // },[generatePassword])
+  // generatePassword()
 
-    useEffect(() =>{
-      let generatedPassword = '';
-      let gibrish = '';
-      let smallletterGibrish = 'abcdefghijklmnopqrstuvwxyz'
-      gibrish  = smallletterGibrish.toUpperCase() + smallletterGibrish
-      if(isnumberchecked) gibrish += '0123456789'
-      if(ischaracterchecked) gibrish += '!@#$%^&*(){}[]'
+  useEffect(() =>{
+    generatePassword()
+  },[generatePassword])
+
+    // useEffect(() =>{
+    //   let generatedPassword = '';
+    //   let gibrish = '';
+    //   let smallletterGibrish = 'abcdefghijklmnopqrstuvwxyz'
+    //   gibrish  = smallletterGibrish.toUpperCase() + smallletterGibrish
+    //   if(isnumberchecked) gibrish += '0123456789'
+    //   if(ischaracterchecked) gibrish += '!@#$%^&*(){}[]'
   
-      for(let i = 0; i < pwlength; i++){
-        generatedPassword += gibrish[Math.floor(Math.random() * gibrish.length )]
-      }
-      setPassword(generatedPassword)
-    },[pwlength,ischaracterchecked,isnumberchecked])
+    //   for(let i = 0; i < pwlength; i++){
+    //     generatedPassword += gibrish[Math.floor(Math.random() * gibrish.length )]
+    //   }
+    //   passRef.current.className = "text-orange-400 py-1 m-1 ml-4 text-xl font-bold"
+    //   setPassword(generatedPassword)
+    // },[pwlength,ischaracterchecked,isnumberchecked])
 
   const handleCopy = () =>{
-
+      console.log(passRef.current)
+      navigator.clipboard.writeText(password)
+      passRef.current?.select()
   }
 
 
@@ -50,10 +57,10 @@ function App() {
     <div className="h-screen w-full bg-black">
         <div className="fixed flex flex-wrap justify-center px-2 top-12 inset-x-0">
            <div className="bg-gray-800 flex px-5 py-4 flex-col rounded-xl justify-center gap-4">
-                <div className="w-125 flex flex-wrap bg-white rounded-xl" >
-                  <span className="object-center text-orange-400 px-3 py-1 text-xl font-bold">{password}</span>
+                <div className="w-125  flex flex-wrap bg-white rounded-xl" >
+                  <input type="text" readOnly value={password} ref={passRef} className=" w-100 text-orange-400  ml-4 text-xl font-bold"/>
                   <button 
-                  className="ml-auto bg-blue-600 h-10 w-20 object-center cursor-pointer text-white rounded-r-lg"
+                  className="ml-auto bg-blue-600 h-11 w-20 object-center shrink-0 cursor-pointer text-white rounded-r-lg"
                   onClick={handleCopy}
                   >copy
                   </button>
