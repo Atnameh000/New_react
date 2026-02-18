@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Colorgrid , Colorbutton } from "./components/index"
+import { Colorgrid } from "./components"
 
 function App() {
   const [Bgcolor, setBgcolor] = useState('gray')
