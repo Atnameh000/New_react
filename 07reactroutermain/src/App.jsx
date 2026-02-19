@@ -33,6 +33,10 @@ const router = createBrowserRouter([
         element: <Contact/>
       },
       {
+        loader: async () =>{
+          const response = await fetch("https://api.github.com/users/hiteshchoudhary")
+          return response.json()
+        },
         path: '/github',
         element: <Github/>
       },

@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react"
+import { useLoaderData } from "react-router"
 
 const Github = () => {
-  const [data, setData] = useState({})
-  useEffect(()=>{
-    fetch("https://api.github.com/users/hiteshchoudhary")
-    .then((res) =>  res.json())
-    .then((res) => setData(res))
-    .catch(() => console.log("failed to load data from the api"))
-  },[])
+  const data = useLoaderData()
+  // const [data, setData] = useState({})
+  // useEffect(()=>{
+  //   fetch("https://api.github.com/users/hiteshchoudhary")
+  //   .then((res) =>  res.json())
+  //   .then((res) => setData(res))
+  //   .catch(() => console.log("failed to load data from the api"))
+  // },[])
   console.log(data)
   return (
     <div>
