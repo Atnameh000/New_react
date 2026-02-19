@@ -31,6 +31,8 @@ function App() {
     "XPF","YER","ZAR","ZMW","ZWG","ZWL"
   ];
 
+  //const currencies = Object.keys(rates)
+
 
   const handleCurrencychange = (e,direction) =>{
     direction == 'From'?
@@ -41,15 +43,16 @@ function App() {
   const handleSwap = () =>{
     setFromcurrency(tocurrency)
     setTocurrency(fromcurrency)
-    setTovalue(fromvalue * rates[tocurrency])
   }
 
   const handleCurrencyexchange = () =>{
     setTovalue(fromvalue * rates[tocurrency])
+    // convertedAmount = fromvalue * rates[tocurrency]
   }
 
   const handleCurrencyupdate = (e) =>{
     setFormvalue(e.target.value)
+    // Amount = e.target.value
   }
 
   const fromPropsarr = {
@@ -76,10 +79,17 @@ function App() {
         <div className="flex flex-col p-5 gap-3 bg-gray-600 rounded-xl">
           <div className="flex flex-col">
             <Currencybox Propsarr = {fromPropsarr}/>
-            <button onClick={handleSwap} className="cursor-pointer relative z-20 ml-55 p-2 bg-blue-600 rounded-xl text-white w-22 border-2">Swap</button>
+            <button 
+              onClick={handleSwap} 
+              className="cursor-pointer relative z-20 ml-55 p-2 bg-blue-600 rounded-xl text-white w-22 border-2"
+            >
+              Swap</button>
             <Currencybox Propsarr= {toPropsarr}/>
           </div>
-          <div onClick={handleCurrencyexchange} className="cursor-pointer flex flex-wrap py-3 justify-center bg-blue-600 rounded-xl text-xl text-white mb-3">
+          <div 
+            onClick={handleCurrencyexchange} 
+            className="cursor-pointer flex flex-wrap py-3 justify-center bg-blue-600 rounded-xl text-xl text-white mb-3"
+          >
             <span>Convert {fromcurrency} to {tocurrency}</span>
          </div>
         </div>
